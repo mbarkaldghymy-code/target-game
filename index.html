@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Target Game</title>
+
+<style>
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+
+h1 {
+  color: #00f7ff;
+}
+
+#game {
+  width: 350px;
+  height: 500px;
+  margin: auto;
+  background: #222;
+  border: 3px solid #00f7ff;
+  position: relative;
+  overflow: hidden;
+}
+
+#target {
+  width: 60px;
+  height: 60px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+}
+
+#score {
+  font-size: 24px;
+  margin: 10px;
+}
+
+button {
+  margin: 15px;
+  padding: 10px 25px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎯 TARGET GAME</h1>
+
+<div id="score">النقاط: 0</div>
+
+<div id="game">
+  <div id="target"></div>
+</div>
+
+<button onclick="restart()">🔄 إعادة اللعب</button>
+
+<script>
+
+let score = 0;
+
+const target = document.getElementById("target");
+const game = document.getElementById("game");
+const scoreText = document.getElementById("score");
+
+function moveTarget() {
+
+  let x = Math.random() * 290;
+  let y = Math.random() * 440;
+
+  target.style.left = x + "px";
+  target.style.top = y + "px";
+}
+
+target.onclick = function() {
+
+  score++;
+
+  scoreText.textContent = "النقاط: " + score;
+
+  moveTarget();
+};
+
+function restart() {
+
+  score = 0;
+
+  scoreText.textContent = "النقاط: 0";
+
+  moveTarget();
+}
+
+moveTarget();
+
+</script>
+
+</body>
+</html>
